@@ -19,14 +19,6 @@ void draw(){
         new_game();
     }
     draw_bg();
-    if(keyPressed){
-        if (keyCode == LEFT){
-            g.move(-1);
-        }
-        if (keyCode == RIGHT){
-            g.move(1);
-        }
-    }
     strokeWeight(3);
     bd.touch(g);
     int score = floor(bd.move_board());
@@ -71,4 +63,17 @@ void new_game(){
     bd.set_bias_speed(g);
     bd.gen_block(0, 0);
     bd.gen_game(80, 10);
+}
+
+void keyPressed(){
+    if (keyCode == LEFT){
+        g.set_xspeed(-1);
+    }
+    if (keyCode == RIGHT){
+        g.set_xspeed(1);
+    }
+}
+
+void keyReleased(){
+    g.set_xspeed(0);
 }

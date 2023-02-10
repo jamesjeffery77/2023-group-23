@@ -12,6 +12,7 @@ public class Guy{
     private int RIGHT_EDGE;
     private float wid;
     private float ini_speed;
+    private float xspeed = 0;
 
     public Guy(float x, float y, int left_edge, int right_edge, float wid, float jumpmax, float acc){
         this.x = x;
@@ -58,6 +59,10 @@ public class Guy{
         speed = (y <= 0) ? sqrt(2 * (jumpmax - y) * acc) : -speed;
     }
 
+    public void set_xspeed(float dir){
+        xspeed = dir;
+    }
+
     public void move(float dir){
         x += dir;
         if (x < LEFT_EDGE){
@@ -70,6 +75,7 @@ public class Guy{
 
     public void update(){
         jump();
+        move(xspeed);
         fill(200);
         stroke(0);
         ellipse(x, trans_pos(y), wid, wid);
