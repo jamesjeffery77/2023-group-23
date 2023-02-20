@@ -3,8 +3,8 @@
 ![alt](./img/team%20photo.jpg)
 
 ## 1.2 Team member
-- Dilkes, Oscar
 - Jeffery, James
+- Dilkes, Oscar
 - Li, Kejun
 - Wang, Dexin
 - Xu, Zihui
