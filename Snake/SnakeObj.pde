@@ -21,6 +21,38 @@ class SnakeObj {
         this.wid = wid;
     }
 
+    SnakeObj (float len, float wid, float startX, float startY) {
+        head = new SnakeVertex(startX, startY);
+        currentDir = Dir.DirRight;
+        tail = new SnakeVertex(startX-len, startY, currentDir, currentDir);
+        this.len = len;
+        this.wid = wid;
+    }
+
+    SnakeObj (float len, float wid, float startX, float startY, Dir startD) {
+        head = new SnakeVertex(startX, startY);
+        currentDir = startD;
+        float tailX = startX;
+        float tailY = startY;
+        switch (startD){
+            case DirUp :
+                tailY += len;
+                break;
+            case DirDown :
+                tailY -= len;
+                break;
+            case DirLeft :
+                tailX += len;
+                break;
+            case DirRight :
+                tailX -= len;
+                break; 
+        }
+        tail = new SnakeVertex(tailX, tailY, currentDir, currentDir);
+        this.len = len;
+        this.wid = wid;
+    }
+
     void setMatrixSize(int wid, int hei){
         matrixWid = wid;
         matrixHei = hei;
