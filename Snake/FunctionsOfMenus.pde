@@ -155,9 +155,7 @@ void displayPauseScreen(){
   background(255);
   drawTopBar();
   s1.draw();
-  if (twoPlayers) {
-    s2.draw();
-  }
+  s2.draw();
   dotGenerator.drawDots();
   rectMode(CORNER);
   fill(0, 0, 0, 80);

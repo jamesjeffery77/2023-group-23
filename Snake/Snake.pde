@@ -113,6 +113,9 @@ PVector     s2InitPosition  = new PVector(600, 750);
 Dir         s2InitD         = Dir.DirLeft;
 PVector     s2Colour        = new PVector(220, 220, 230);
 
+/* Controlers */
+SnakeControler controler1, controler2;
+
 /* Temp Snakes */
 //Used to decoration
 SnakeObj sTemp1;

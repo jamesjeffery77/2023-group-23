@@ -25,10 +25,10 @@ class DotGenerator {
   void generateDot(){
     Dot dot;
     do{
-      float dotX = random(leftBoundary + dotSize, rightBoundary - dotSize);
-      float dotY = random(topBoundary + dotSize, bottomBoundary - dotSize);
+      float dotX = random(leftBoundary + sWid, rightBoundary - sWid);
+      float dotY = random(topBoundary + sWid, bottomBoundary - sWid);
       dot = new Dot(dotX, dotY, dotSize);
-    } while ( s1.headTouchesDot(dot) || (twoPlayers && s2.headTouchesDot(dot)));
+    } while (s1.headTouchesDot(dot) || s2.headTouchesDot(dot));
     dotsList.add(dot);
   }
 
@@ -40,7 +40,7 @@ class DotGenerator {
         s1.grow(growthLength);
         score1 ++;
         iter.remove();
-      } else if (twoPlayers && s2.headTouchesDot(dot)){
+      } else if (s2.headTouchesDot(dot)){
         s2.grow(growthLength);
         score2 ++;
         iter.remove();

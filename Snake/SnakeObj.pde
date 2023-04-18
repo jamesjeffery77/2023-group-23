@@ -54,6 +54,19 @@ class SnakeObj {
     this(len, wid, position.x, position.y, startD);
   }
 
+  SnakeObj (SnakeObj s){
+    this.vertexList = new ArrayList<SnakeVertex>(s.vertexList);
+    this.currentDir = s.currentDir;
+    this.speed = s.speed;
+    this.head = new SnakeVertex(s.head.x, s.head.y, s.head.from, s.head.to);
+    this.tail = new SnakeVertex(s.tail.x, s.tail.y, s.tail.to);
+    this.len = s.len;
+    this.wid = s.wid;
+    this.r = s.r;
+    this.g = s.g;
+    this.b = s.b;
+  }
+
   void move (){
     moveVertex(head, currentDir, speed);
 
@@ -107,6 +120,19 @@ class SnakeObj {
     currentDir = d;
   }
 
+  void turn (Dir d, float num){
+    if (currentDir == d || getOppo(currentDir) == d){
+      return;
+    }
+    SnakeVertex v = new SnakeVertex(head.x, head.y, currentDir, d);
+    if (vertexList.size() > 0 
+      && calcDist(v, vertexList.get(vertexList.size() - 1)) < wid * num){
+      return;
+    }
+    vertexList.add(v);
+    currentDir = d;
+  }
+
   void grow (float len){
     this.len += len;
     moveVertex(tail, getOppo(tail.to), len);
@@ -149,7 +175,7 @@ class SnakeObj {
     SnakeVertex v1 = tail;
     for (int i = 0; i < vertexList.size() - 2; i++){
       SnakeVertex v = vertexList.get(i);
-      if (distPointToBody(x, y, v1, v) < wid){
+      if (distPointToBody(x, y, v1, v) < wid/2){
         return true;
       }
       v1 = v;
