@@ -1,4 +1,4 @@
-# Snake V1.0
+# Snake V1.1
 
 Use <b>arrow keys</b> to control the red snake (in both one-player and two-player mode).
 
@@ -11,4 +11,6 @@ When
 - the snake touches the other snake
 
 the game will be over.
+
+In single user mode, the second snake is an AI snake. Try to beat it.
 
